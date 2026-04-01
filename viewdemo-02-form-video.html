@@ -7,7 +7,7 @@
 
      WORKFLOW:
      1. Visitor sees HubSpot form (portalId 442347961,
-        formId 78cd7b20-47ba-4435-b0b9-6a6c176922fc, region ap1)
+        formId 4ffc1eed-4d1f-4758-8634-57102d622809, region ap1)
      2. On submit, HubSpot syncs lead to CRM automatically
      3. Form panel fades out, video panel fades in
      4. Two post-video CTAs appear below the video:
@@ -90,7 +90,7 @@
     background: var(--hp-white);
     border: 2px solid var(--hp-gold);
     border-radius: 8px;
-    padding: 36px 40px;
+    padding: 28px 40px;
     max-width: 560px;
   }
 
@@ -310,7 +310,7 @@
     </div>
 
     <div class="video-panel__ctas">
-      <a href="https://my.hivepix.com/sign-in"
+      <a href="https://au.myhivepix.com/signup"
          class="btn btn--primary"
          target="_blank" rel="noopener noreferrer"
          aria-label="Sign up for a free HivePix trial">Sign Up for Free Trial &#8594;</a>
@@ -354,7 +354,9 @@
   function reportHeight() {
     var h = Math.max(document.body.scrollHeight, document.body.offsetHeight,
       document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-    if (h !== lastH) { lastH = h; window.parent.postMessage({ type: 'iwh', height: h }, '*'); }
+    if (h !== lastH) { lastH = h; window.parent.postMessage({ type: 'iwh', height: h }, '*');
+      window.parent.postMessage({ height: h }, '*');
+      window.parent.postMessage(JSON.stringify({ height: h }), '*'); }
   }
   window.reportHeight = reportHeight;
   window.addEventListener('load', reportHeight);
